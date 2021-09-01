@@ -7,6 +7,7 @@ public class HealthyHearts {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your age?");
         int age = scanner.nextInt();
+
         int maximumHeartRate = 220 - age;
         double lowerBound = maximumHeartRate * .5;
         double upperBound = maximumHeartRate * .85;
@@ -15,3 +16,4 @@ public class HealthyHearts {
         System.out.println("Your target HR Zone is " + lowerBound + " - " + upperBound + " beats per minute");
     }
 }
+

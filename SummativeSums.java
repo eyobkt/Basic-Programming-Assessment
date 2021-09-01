@@ -18,3 +18,4 @@ public class SummativeSums {
         return sum;
     }
 }
+
