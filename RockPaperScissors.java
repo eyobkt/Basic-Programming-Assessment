@@ -1,8 +1,12 @@
 package com.sg.basicprogrammingconceptsassessment;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * A command-line game of Rock, Paper, Scissors played against the computer 
+ */
 public class RockPaperScissors {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -23,12 +27,27 @@ public class RockPaperScissors {
         
             for (int i = 0; i < numRounds; i++) {
                 System.out.println("Round " + (i + 1));
-                System.out.println("Enter 1 for Rock, 2 for Paper, or 3 for Scissors");
-                int selection = scanner.nextInt();
-                scanner.nextLine();
                 
+                int selection = 0;
+                     
+                // Repeatedly ask the user for an int that's 1, 2, or 3, until they do so
+                while (true) {
+                    System.out.println("Enter 1 for Rock, 2 for Paper, or 3 for Scissors");
+                    
+                    try {
+                        selection = scanner.nextInt();
+                    } catch (InputMismatchException e) {
+                        scanner.nextLine();
+                        continue;
+                    }
+                    
+                    if (selection >= 1 && selection <= 3) {
+                        break;
+                    }
+                }
+
                 int computerSelection = 1 + random.nextInt(3);
-                
+                 
                 if (selection == computerSelection) {
                     System.out.println("Tie");
                     numRoundsTied++;
@@ -53,6 +72,7 @@ public class RockPaperScissors {
                 System.out.println("The game is a tie");
             }
             
+            scanner.nextLine();
             System.out.println("Would you like to play another game?");
             String yesOrNo = scanner.nextLine();
             
@@ -63,4 +83,3 @@ public class RockPaperScissors {
         }        
     }
 }
-
